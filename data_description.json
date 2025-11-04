@@ -1,0 +1,54 @@
+{
+  "dataset_name": "Brazil - Primary Enrollment and GDP per capita (2001-2020)",
+  "source_files": [
+    "API_SE.PRM.ENRL_DS2_en_csv_v2_4538564.zip (UN data source for primary enrollment)",
+    "WDI_csv.zip (World Bank WDI GDP per capita, messy source cleaned)"
+  ],
+  "notes": "Primary enrollment is for Brazil for years 2001-2020. GDP per capita is in current US dollars. Rows correspond to years; file contains header row.",
+  "columns": [
+    {
+      "name": "RowIndex",
+      "type": "integer",
+      "meaning": "Row number / index (0-based or 1-based depending on export); used for display ordering only"
+    },
+    {
+      "name": "Year",
+      "type": "integer",
+      "meaning": "Calendar year (e.g., 2001, 2002, ..., 2020)"
+    },
+    {
+      "name": "Primary_Enrollment",
+      "type": "float",
+      "units": "percent or absolute (see note)",
+      "meaning": "Primary school enrollment for Brazil in the given year. (Format used in this CSV: percentage of relevant population; if absolute number, it will be noted below.)"
+    },
+    {
+      "name": "GDP_per_capita",
+      "type": "float",
+      "units": "current US dollars (USD)",
+      "meaning": "Gross Domestic Product (GDP) per capita for Brazil in the given year, expressed in current US dollars."
+    },
+    {
+      "name": "Country",
+      "type": "string",
+      "meaning": "Country name. This dataset contains only Brazil (included for clarity)."
+    }
+  ],
+  "data_quality": {
+    "missing_values": "Years with no data are represented as null or blank in the CSV. No rows were removed except where both enrollment and GDP were missing.",
+    "transformations": [
+      "GDP data parsed and cleaned from messy WDI CSV; non-numeric characters removed, thousand separators normalized, and values cast to float.",
+      "Enrollment values extracted from UN CSV and matched to years 2001-2020.",
+      "Joined on Year and Country; country codes validated for Brazil (BRA)."
+    ],
+    "date_of_creation": "2025-11-03",
+    "contact": "Your Name (replace with your name or course ID)"
+  },
+  "example_row": {
+    "RowIndex": 0,
+    "Year": 2001,
+    "Primary_Enrollment": 95.3,
+    "GDP_per_capita": 3200.45,
+    "Country": "Brazil"
+  }
+}
